@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
@@ -19,11 +19,18 @@
     </nav>
 
     <main class="home">
-        <h1>echoes of silence</h1>
+        <h1 class="intro-text">echoes of silence</h1>
         <p class="tagline">a tribute to the weeknd's echoes of silence mixtape</p>
     </main>
 
     <script src="scripts/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true
+        })
+    </script>
 
 </body>
 </html>
