@@ -12,6 +12,7 @@ html, body {
     scroll-behavior: smooth;
     overflow-x: hidden;
     cursor: none;
+    background: url('../assets/XO.jpg');
 }
 
 section {
