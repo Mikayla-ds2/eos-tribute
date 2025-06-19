@@ -43,8 +43,23 @@ lyrics.forEach(lyric => {
 });
 
 const trail = document.querySelector('.trail');
+let mouseX = 0;
+let mouseY = 0;
+let currentX = 0;
+let currentY = 0;
 
 document.addEventListener('mousemove', e => {
-    trail.style.top = `${e.clientY}px`;
-    trail.style.left = `${e.clientX}px`;
-})
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateTrail() {
+  currentX += (mouseX - currentX) * 0.15;
+  currentY += (mouseY - currentY) * 0.15;
+
+  trail.style.left = `${currentX}px`;
+  trail.style.top = `${currentY}px`;
+
+  requestAnimationFrame(animateTrail);
+}
+animateTrail();
