@@ -41,3 +41,10 @@ lyrics.forEach(lyric => {
     lyric.dataset.lyric = lyric.textContent;
     observer.observe(lyric);
 });
+
+const trail = document.querySelector('.trail');
+
+document.addEventListener('mousemove', e => {
+    trail.style.top = `${e.clientY}px`;
+    trail.style.left = `${e.clientX}px`;
+})

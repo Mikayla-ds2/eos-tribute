@@ -26,3 +26,20 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+.trail {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(145, 44, 44, 0.5);
+    pointer-events: none;
+    mix-blend-mode: lighten;
+    transform: translate(-50%, -50%);
+    transition: top 0.1s ease, left 0.1s ease;
+    z-index: 999;
+}
+
+button, timestamp {
+    font-family: 'Inter', sans-serif;
+}
