@@ -54,12 +54,10 @@ document.addEventListener('mousemove', e => {
 });
 
 function animateTrail() {
-  currentX += (mouseX - currentX) * 0.15;
-  currentY += (mouseY - currentY) * 0.15;
-
+  currentX += (mouseX - currentX) * 0.2;
+  currentY += (mouseY - currentY) * 0.2;
   trail.style.left = `${currentX}px`;
   trail.style.top = `${currentY}px`;
-
   requestAnimationFrame(animateTrail);
 }
 animateTrail();

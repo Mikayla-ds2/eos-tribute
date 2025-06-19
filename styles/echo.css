@@ -2,6 +2,7 @@
     background: url(../assets/balloons.jpg) center/cover no-repeat;
     padding: 4rem 2rem;
     font-family: 'Inter', sans-serif;
+    cursor: none;
 
 }
 
@@ -52,4 +53,17 @@ form button {
     font-size: 0.8rem;
     color: #777;
     margin-bottom: 0.5rem;
+}
+
+.trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(90, 20, 20, 0.6) 0%, rgba(90, 20, 20, 0.1) 80%);
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    filter: blur(4px);
 }

@@ -18,3 +18,23 @@ document.getElementById('echoForm').addEventListener('submit', function(e) {
         input.value = '';
     }
 });
+
+const trail = document.querySelector('.trail');
+let mouseX = 0;
+let mouseY = 0;
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateTrail() {
+  currentX += (mouseX - currentX) * 0.2;
+  currentY += (mouseY - currentY) * 0.2;
+  trail.style.left = `${currentX}px`;
+  trail.style.top = `${currentY}px`;
+  requestAnimationFrame(animateTrail);
+}
+animateTrail();

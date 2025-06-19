@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name='viewpoint' content="width=device-width, initial-scale=1.0" />
-    <title>Echo Chamber</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echo Chamber</title>
 
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/echo.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
-    <nav class="navbar">
-        <a href="/">「 ✦ home ✦ 」</a>
-        <a href="track.html">「 ✦ tracks ✦ 」</a>
-        <a href="echo.html">「 ✦ echo chamber ✦ 」</a>
-    </nav>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/echo.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <section class="echo-chamber">
-        <h2>echo chamber</h2>
-        <form id="echoForm">
-            <textarea placeholder="leave ur echo..."></textarea>
-            <button type="submit">submit echo</button>
-        </form>
-        <div class="echo-feed"></div>
-    </section>
+  <nav class="navbar">
+    <a href="/">「 ✦ home ✦ 」</a>
+    <a href="track.html">「 ✦ tracks ✦ 」</a>
+    <a href="echo.html">「 ✦ echo chamber ✦ 」</a>
+  </nav>
 
-    <script src="echo.js"></script>
+  <div class="trail"></div>
+
+  <section class="echo-chamber">
+    <h2>echo chamber</h2>
+    <form id="echoForm">
+      <textarea id="echoInput" placeholder="leave ur echo..."></textarea>
+      <button type="submit">submit echo</button>
+    </form>
+    <div id="echoFeed" class="echo-feed"></div>
+  </section>
+
+  <script src="scripts/echo.js"></script>
 </body>
 </html>
-
