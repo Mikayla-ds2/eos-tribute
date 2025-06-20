@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (i < text.length) {
                 intro.textContent += text[i];
                 i++;
-                setTimeout(type, 500);
+                setTimeout(type, 100);
             }
         };
         type();
