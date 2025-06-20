@@ -8,17 +8,51 @@
     <link rel="stylesheet" href="styles/track.css" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
+    <style>
+        .gate-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        font-family: 'Playfair Display', serif;
+        }
+
+        .gate-overlay button {
+        background: none;
+        border: 1px solid white;
+        color: white;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        }
+
+        .gate-overlay button:hover {
+        background: #912c2c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gate-overlay" id="audio-gate">
+        <button id="start-audio">start the experience</button>
+    </div>
+
     <nav class="navbar">
         <a href="/">「 ✦ home ✦ 」</a>
         <a href="track.html">「 ✦ tracks ✦ 」</a>
         <a href="echo.html">「 ✦ echo chamber ✦ 」</a>
     </nav>
-</head>
 
-<body>
     <div class="trail"></div>
 
     <main class="tracks">
+
+    <audio id="unlock-audio" src="assets/silence.mp3" preload="auto"></audio>
     <section class="track" id="the-fall" data-aos="fade-up">
         <h2>The Fall</h2>
 
@@ -116,6 +150,23 @@
         <audio id="same-old-song-audio" src="assets/The Weeknd - Same Old Song.mp3" controls></audio>
     </section>
     </main>
+
+    <script>
+document.getElementById('start-audio').addEventListener('click', () => {
+  const unlockAudio = document.getElementById('unlock-audio');
+  if (!unlockAudio) return;
+
+  unlockAudio.volume = 0;
+  unlockAudio.play().then(() => {
+    unlockAudio.pause();
+    unlockAudio.volume = 1;
+    document.getElementById('audio-gate').remove();
+  }).catch(err => {
+    console.warn('Autoplay unlock failed:', err);
+    alert('Please click again to enable sound.');
+  });
+});
+</script>
 
     <script src="scripts/main.js"></script>
 </body>

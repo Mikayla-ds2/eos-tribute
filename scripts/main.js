@@ -1,5 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Intro typing animation
+  // 🔓 Unlock autoplay when button is clicked
+  const startBtn = document.getElementById('start-audio');
+  const unlockAudio = document.getElementById('unlock-audio');
+
+  if (startBtn && unlockAudio) {
+    startBtn.addEventListener('click', () => {
+      unlockAudio.volume = 0;
+      unlockAudio.play().then(() => {
+        unlockAudio.pause();
+        unlockAudio.volume = 1;
+        document.getElementById('audio-gate').remove();
+      }).catch(err => {
+        console.warn("Autoplay unlock failed:", err);
+        alert("Please click again to enable sound.");
+      });
+    });
+  }
+
+  // 🖋 Intro typing animation (for homepage)
   const intro = document.querySelector('.intro-text');
   if (intro) {
     let text = intro.textContent;
@@ -15,25 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     type();
   }
 
-  // Audio + lyric sync on click
-  document.addEventListener('DOMContentLoaded', () => {
-  const tracksNav = document.getElementById('tracks-nav');
-  if (tracksNav) {
-    tracksNav.addEventListener('click', () => {
-      // Try to unlock autoplay before navigating
-      document.querySelectorAll('audio').forEach(audio => {
-        audio.volume = 0;
-        audio.play().then(() => {
-          audio.pause();
-          audio.volume = 1; // Reset volume after unlocking
-        }).catch(err => {
-          console.warn('Autoplay failed to unlock:', err);
-        });
-      });
-    });
-  }
-  
-});
+  // 🎧 Click-triggered lyric segments
   document.querySelectorAll('section.track').forEach(section => {
     const audio = section.querySelector('audio');
     const lyrics = section.querySelectorAll('.lyrics p');
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const start = parseFloat(line.dataset.start);
         const end = parseFloat(line.dataset.end);
 
-        // Reset other lyrics
+        // Reset other lines
         lyrics.forEach(l => {
           if (l !== line) {
             l.classList.remove('active');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
 
-        // Play clip
+        // Play this clip
         audio.currentTime = start;
         audio.play();
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         audio.addEventListener('timeupdate', stopAt);
 
-        // Animate current lyric
+        // Typing effect
         if (!line.classList.contains('active')) {
           line.classList.add('active');
           const fullText = line.dataset.lyric;
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Scroll-triggered section activation
+  // 🔁 Scroll-activated lyric & audio
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const end = parseFloat(lyric.dataset.end);
         const fullText = lyric.dataset.lyric;
 
-        // Reset and play only the lyric portion
         audio.currentTime = start;
         audio.play();
 
@@ -121,20 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         type();
 
-        // Only trigger once
-        observer.unobserve(section);
+        observer.unobserve(section); // only once
       }
     });
-  }, {
-    threshold: 0.5
-  });
+  }, { threshold: 0.5 });
 
-  // Attach observer to each track section
   document.querySelectorAll('section.track').forEach(section => {
     observer.observe(section);
   });
 
-  // Cursor trail effect
+  // ✨ Red cursor trail
   const trail = document.querySelector('.trail');
   let mouseX = 0, mouseY = 0;
   let currentX = 0, currentY = 0;
