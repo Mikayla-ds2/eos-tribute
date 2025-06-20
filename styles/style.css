@@ -15,6 +15,20 @@ html, body {
     background: url('../assets/XO.jpg');
 }
 
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+    max-width: 110%;
+    display: block;
+    overflow-x: visible;
+}
+
+.tagline {
+    text-align: center;
+}
+
 section {
     min-height: 100vh;
     padding: 4rem 2rem;
