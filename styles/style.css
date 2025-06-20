@@ -30,15 +30,15 @@ a {
 }
 
 .trail {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(90, 20, 20, 0.6) 0%, rgba(90, 20, 20, 0.1) 80%);
-    pointer-events: none;
-    mix-blend-mode: screen;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    filter: blur(4px);
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 45, 45, 0.9), rgba(145, 44, 44, 0.6));
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.4);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  mix-blend-mode: lighten;
 }
 
